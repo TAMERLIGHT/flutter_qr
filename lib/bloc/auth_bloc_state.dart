@@ -5,17 +5,12 @@ abstract class AuthBlocState {}
 
 class AuthBlocInitial extends AuthBlocState {}
 
-// Состояние когда только включилась
-class AuthInitial extends AuthBlocState {}
-
-class UnAuthState extends AuthBlocState {}
-
-// Состояние в загрузке
 class LoadingAuthState extends AuthBlocState {}
 
-// Состояние в загружено
-class LoadedAuthState extends AuthBlocState {}
+class LoadedAuthState extends AuthBlocState {
+  final String username;
+  final String email;
+  LoadedAuthState({required this.username, required this.email, required responseBody});
+}
 
-
-// Состояние ошибка при получении чего либо
 class FailureLoginState extends AuthBlocState {}

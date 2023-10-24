@@ -6,9 +6,23 @@ part 'auth_bloc_event.dart';
 part 'auth_bloc_state.dart';
 
 class AuthBlocBloc extends Bloc<AuthBlocEvent, AuthBlocState> {
-  final _repository = AuthRepository();
+  final AuthRepository _repository = AuthRepository();
+
   AuthBlocBloc() : super(AuthBlocInitial()) {
-    on<AuthBlocEvent>((event, emit) => emit(AuthBlocInitial()));
-    on<GetAuthEvent>(_repository.onGetAuthEvent);
+    on<GetAuthEvent>((event, emit) async {
+      emit(LoadingAuthState());
+      try {
+        final response = await _repository.onGetAuthEvent(event);
+        if (response.statusCode == 200) {
+          final responseBody = response.body;
+          emit(LoadedAuthState(username: event.username, email: event.email, responseBody: responseBody));
+          print(responseBody);
+        } else {
+          emit(FailureLoginState());
+        }
+      } catch (_) {
+        emit(FailureLoginState());
+      }
+    });
   }
 }

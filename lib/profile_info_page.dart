@@ -1,23 +1,27 @@
 import 'package:flutter/material.dart';
 
-class ProfileInfoPage extends StatefulWidget {
-  const ProfileInfoPage({super.key});
+class ProfileInfoPage extends StatelessWidget {
+  final String userProfileName;
+  final String userProfileEmail;
 
-  @override
-  State<ProfileInfoPage> createState() => _ProfileInfoPageState();
-}
+  const ProfileInfoPage({super.key, 
+    required this.userProfileName,
+    required this.userProfileEmail,
+  });
 
-class _ProfileInfoPageState extends State<ProfileInfoPage> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("Пользователь зарегистрирован"),
-        ),
-        body: Container(
-          margin: const EdgeInsets.all(30),
-          child: const Text("Регистрация прошла успешно!"),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Профиль"),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Имя: $userProfileName"),
+            Text("Email: $userProfileEmail"),
+          ],
         ),
       ),
     );

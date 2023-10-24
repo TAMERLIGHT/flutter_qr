@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/bloc/auth_bloc_bloc.dart';
-import 'package:flutter_application_1/profile_info_page.dart';
+import 'package:flutter_application_1/bottom_bar_page.dart';
+// import 'package:flutter_application_1/profile_info_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
@@ -40,7 +41,6 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.light,
       home: Scaffold(
         appBar: AppBar(
           title: const Text("Регистрация"),
@@ -50,7 +50,7 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             children: [
               buildAuthBlocListener(),
-              buildTextFormFiled(),
+              buildTextFormField(),
               buildButton(),
             ],
           ),
@@ -64,8 +64,15 @@ class _MyAppState extends State<MyApp> {
       bloc: authBloc,
       listener: (context, state) {
         if (state is LoadedAuthState) {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const ProfileInfoPage()));
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => BottomBarPage(
+                userProfileName: state.username,
+                userProfileEmail: state.email,
+              ),
+            ),
+          );
         }
         if (state is FailureLoginState) {
           const errorMessage = "Ошибка подключения к БД";
@@ -91,10 +98,10 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
-  Widget buildTextFormFiled() {
+  Widget buildTextFormField() {
     return Column(
       children: [
-        TextField(
+        TextFormField(
           controller: usernameController,
           keyboardType: TextInputType.text,
           decoration: const InputDecoration(
@@ -104,7 +111,7 @@ class _MyAppState extends State<MyApp> {
           ),
         ),
         const SizedBox(height: 6),
-        TextField(
+        TextFormField(
           controller: emailController,
           keyboardType: TextInputType.emailAddress,
           decoration: const InputDecoration(
@@ -123,7 +130,8 @@ class _MyAppState extends State<MyApp> {
         String username = usernameController.text;
         String email = emailController.text;
 
-        if (usernameValidator.hasMatch(username) && emailValidator.hasMatch(email)) {
+        if (usernameValidator.hasMatch(username) &&
+            emailValidator.hasMatch(email)) {
           authBloc.add(GetAuthEvent(username, email));
         } else {
           const errorMessage = "Неверный формат имени пользователя или email";
