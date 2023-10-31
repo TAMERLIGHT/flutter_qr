@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/bloc/auth_bloc_bloc.dart';
 import 'package:flutter_application_1/bottom_bar_page.dart';
-// import 'package:flutter_application_1/profile_info_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-void main() {
-  runApp(const MyApp());
-}
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);

@@ -41,6 +41,7 @@ dependencies:
   meta: ^1.9.1
   bloc: ^8.1.2
   lottie: ^2.7.0
+  logger: ^2.0.2+1
 
 dev_dependencies:
   flutter_test:

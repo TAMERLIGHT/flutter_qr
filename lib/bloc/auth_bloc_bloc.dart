@@ -1,9 +1,13 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter_application_1/resources/auth_repository.dart';
 import 'package:meta/meta.dart';
-
+import 'package:logger/logger.dart';
 part 'auth_bloc_event.dart';
 part 'auth_bloc_state.dart';
+
+var logger = Logger(
+  printer: PrettyPrinter(),
+);
 
 class AuthBlocBloc extends Bloc<AuthBlocEvent, AuthBlocState> {
   final AuthRepository _repository = AuthRepository();
@@ -16,7 +20,7 @@ class AuthBlocBloc extends Bloc<AuthBlocEvent, AuthBlocState> {
         if (response.statusCode == 200) {
           final responseBody = response.body;
           emit(LoadedAuthState(username: event.username, email: event.email, responseBody: responseBody));
-          print(responseBody);
+          logger.d(responseBody);
         } else {
           emit(FailureLoginState());
         }
