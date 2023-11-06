@@ -26,29 +26,16 @@ class _FavoritePageState extends State<FavoritePage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text(
-          "News",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 26,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-              bottomRight: Radius.elliptical(700, 50),
-              bottomLeft: Radius.elliptical(700, 50)),
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.white,
+        title: const Text("Избранное"),
+        backgroundColor: Colors.pink,
       ),
       body: BlocBuilder(
         bloc: favoriteBloc,
         builder: (context, state) {
           if (state is LoadingListState) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(
-                color: Colors.red,
+                color: Colors.blue,
               ),
             );
           }
@@ -57,8 +44,8 @@ class _FavoritePageState extends State<FavoritePage> {
             return buildBody();
           }
           if (state is FailureProfileState) {
-            return Center(
-              child: Text("Error"),
+            return const Center(
+              child: Text("Ошибка"),
             );
           }
           return Container();
@@ -74,18 +61,19 @@ class _FavoritePageState extends State<FavoritePage> {
         Stack(
           children: [
             Card(
+              elevation: 3, // Добавляем тень
+              margin: const EdgeInsets.all(10),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10), // Добавляем закругления
+              ),
               child: ListTile(
+                leading: const Icon(
+                  Icons.favorite, // Иконка сердечка
+                  color: Colors.blue, // Цвет иконки
+                ),
                 title: Text(
                   item.title.toString(),
                   textAlign: TextAlign.start,
-                ),
-                trailing: ConstrainedBox(
-                  constraints: const BoxConstraints(
-                    minWidth: 44,
-                    minHeight: 44,
-                    maxWidth: 50,
-                    maxHeight: 64,
-                  ),
                 ),
               ),
             ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class ExplorePage extends StatelessWidget {
   const ExplorePage({Key? key}) : super(key: key);
@@ -11,12 +12,12 @@ class ExplorePage extends StatelessWidget {
         backgroundColor: Colors.pink,
       ),
       body: Center(
-        // child: Lottie.asset(
-        //   'assets/animations/animation.json',
-        //   width: 300,
-        //   height: 300,
-        //   fit: BoxFit.fill,
-        // ),
+        child: Lottie.asset(
+           'assets/animations/animation.json',
+           width: 300,
+           height: 300,
+           fit: BoxFit.fill,
+         ),
       ),
     );
   }
