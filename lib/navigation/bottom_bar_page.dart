@@ -1,10 +1,10 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/home_page.dart';
-import 'package:flutter_application_1/pages/explore_page.dart';
-import 'package:flutter_application_1/pages/favorite_page.dart';
-import 'package:flutter_application_1/pages/profile_page.dart';
+import 'package:flutter_application_1/pages/home/page/home_page.dart';
+import 'package:flutter_application_1/pages/explore/page/explore_page.dart';
+import 'package:flutter_application_1/pages/favorite/page/favorite_page.dart';
+import 'package:flutter_application_1/pages/profile/page/profile_page.dart';
 
 class BottomBarPage extends StatefulWidget {
   final String userProfileName;

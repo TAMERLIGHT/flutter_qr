@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter_application_1/resources/auth_repository.dart';
+import 'package:flutter_application_1/pages/authentication/resources/auth_repository.dart';
 import 'package:meta/meta.dart';
 import 'package:logger/logger.dart';
 part 'auth_bloc_event.dart';
