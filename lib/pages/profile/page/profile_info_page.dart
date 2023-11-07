@@ -4,7 +4,7 @@ class ProfileInfoPage extends StatelessWidget {
   final String userProfileName;
   final String userProfileEmail;
 
-  const ProfileInfoPage({super.key, 
+  const ProfileInfoPage({Key? key, 
     required this.userProfileName,
     required this.userProfileEmail,
   });

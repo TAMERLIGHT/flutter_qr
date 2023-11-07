@@ -4,7 +4,7 @@ import 'package:flutter_application_1/pages/favorite/bloc/favorite_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FavoritePage extends StatefulWidget {
-  const FavoritePage({super.key});
+  const FavoritePage({Key? key});
 
   @override
   State<FavoritePage> createState() => _FavoritePageState();

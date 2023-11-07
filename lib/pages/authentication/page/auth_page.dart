@@ -4,7 +4,7 @@ import 'package:flutter_application_1/pages/authentication/bloc/auth_bloc_bloc.d
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Auth extends StatefulWidget {
-  const Auth({super.key});
+  const Auth({Key? key});
 
   @override
   State<Auth> createState() => _AuthState();
